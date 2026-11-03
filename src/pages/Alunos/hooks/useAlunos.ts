@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useEffect, useMemo, useState } from 'react';
+import { ChangeEvent, FormEvent, KeyboardEvent, useEffect, useMemo, useState } from 'react';
 import axios from 'axios';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { usePersonalTrainerContext } from '../../../context/PersonalTrainerContext';
@@ -91,6 +91,14 @@ function useAlunos() {
   const [traineeSelectedId, setTraineeSelectedId] = useState<string | null>(null);
   const [detailsTab, setDetailsTab] = useState<'overview' | 'settings'>('overview');
   useEffect(() => { setDetailsTab('overview'); }, [traineeSelectedId]);
+  const handleDetailsTabKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
+    if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+    event.preventDefault();
+    const nextTab = event.key === 'Home' ? 'overview' : event.key === 'End' ? 'settings'
+      : detailsTab === 'overview' ? 'settings' : 'overview';
+    setDetailsTab(nextTab);
+    document.getElementById(`student-${nextTab}-tab`)?.focus();
+  };
   const [isCreateOpen, setIsCreateOpen] = useState(false);
   const [formData, setFormData] = useState<TraineeFormData>(EMPTY_FORM_DATA);
   const [formError, setFormError] = useState<string | null>(null);
@@ -416,7 +424,7 @@ function useAlunos() {
   };
 
   return {
-    detailsTab, setDetailsTab,
+    detailsTab, setDetailsTab, handleDetailsTabKeyDown,
     loading: queryTrainees.isLoading || Boolean(traineeSelectedId && queryDetailsTrainee.isLoading),
     loadError: queryTrainees.error || queryDetailsTrainee.error
       ? getApiErrorMessage(queryTrainees.error || queryDetailsTrainee.error, 'Não foi possível carregar os alunos.') : null,

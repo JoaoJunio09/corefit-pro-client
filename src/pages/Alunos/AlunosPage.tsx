@@ -46,7 +46,7 @@ export default function AlunosPage() {
   const [trainingPlanMode, setTrainingPlanMode] = useState<'create' | 'edit' | 'new' | null>(null);
 
   const {
-    detailsTab, setDetailsTab,
+    detailsTab, setDetailsTab, handleDetailsTabKeyDown,
     loading, loadError, retry,
     trainees,
     traineSelected,
@@ -448,8 +448,8 @@ export default function AlunosPage() {
             </div>
 
             <nav className="cf-student-detail-tabs" role="tablist" aria-label="Detalhes do aluno">
-              <button id="student-overview-tab" type="button" role="tab" aria-selected={detailsTab === 'overview'} aria-controls="student-overview-panel" onClick={() => setDetailsTab('overview')}><LayoutDashboard size={17} />Visão geral</button>
-              <button id="student-settings-tab" type="button" role="tab" aria-selected={detailsTab === 'settings'} aria-controls="student-settings-panel" onClick={() => setDetailsTab('settings')}><Settings size={17} />Configurações</button>
+              <button id="student-overview-tab" type="button" role="tab" tabIndex={detailsTab === 'overview' ? 0 : -1} aria-selected={detailsTab === 'overview'} aria-controls="student-overview-panel" onClick={() => setDetailsTab('overview')} onKeyDown={handleDetailsTabKeyDown}><LayoutDashboard size={17} />Visão geral</button>
+              <button id="student-settings-tab" type="button" role="tab" tabIndex={detailsTab === 'settings' ? 0 : -1} aria-selected={detailsTab === 'settings'} aria-controls="student-settings-panel" onClick={() => setDetailsTab('settings')} onKeyDown={handleDetailsTabKeyDown}><Settings size={17} />Configurações</button>
             </nav>
 
             {detailsTab === 'settings' ? (

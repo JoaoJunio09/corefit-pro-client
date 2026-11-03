@@ -8,4 +8,4 @@ export interface TraineeAccount {
   enabled: boolean;
 }
 
-export type TraineeAccountRequest = Omit<TraineeAccount, 'traineeId'>;
+export type TraineeAccountRequest = Omit<TraineeAccount, "traineeId">;
