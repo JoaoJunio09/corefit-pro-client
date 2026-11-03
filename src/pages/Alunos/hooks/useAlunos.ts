@@ -13,6 +13,7 @@ import {
   TraineeFormData
 } from '../types/aluno.types';
 import { PhysicalAssessmentResponse } from '../../../models/physicalAssessment/PhysicalAssessmentRespons';
+import { calculateWorkoutPercentage, formatWorkoutPercentage, normalizeWorkoutPercentage } from '../../../utils/workoutProgress';
 
 const EMPTY_FORM_DATA: TraineeFormData = {
   firstName: '',
@@ -125,6 +126,7 @@ function useAlunos() {
     queryKey: traineesQueryKey,
     queryFn: () => traineeService.getAll({ personalTrainerId: personalTrainer?.id }),
     retry: 3,
+    refetchOnWindowFocus: true,
     enabled: Boolean(personalTrainer?.id)
   });
 
@@ -132,6 +134,7 @@ function useAlunos() {
     queryKey: ['trainee', traineeSelectedId],
     queryFn: () => traineeService.getDetails(traineeSelectedId),
     retry: 3,
+    refetchOnWindowFocus: true,
     enabled: Boolean(traineeSelectedId)
   });
 
@@ -423,13 +426,24 @@ function useAlunos() {
     }
   };
 
+  const trainees = useMemo(() => (queryTrainees.data ?? []).map(trainee => ({
+    ...trainee,
+    weeklyProgressPercentage: normalizeWorkoutPercentage(trainee.weeklyProgressPercentage ?? 0),
+    weeklyProgressLabel: formatWorkoutPercentage(trainee.weeklyProgressPercentage ?? 0)
+  })), [queryTrainees.data]);
+  const displayPercentage = calculateWorkoutPercentage(
+    queryDetailsTrainee.data?.completedTrainings ?? 0,
+    queryDetailsTrainee.data?.totalTrainings ?? 0
+  );
+
   return {
+    displayPercentage, displayPercentageLabel: formatWorkoutPercentage(displayPercentage),
     detailsTab, setDetailsTab, handleDetailsTabKeyDown,
     loading: queryTrainees.isLoading || Boolean(traineeSelectedId && queryDetailsTrainee.isLoading),
     loadError: queryTrainees.error || queryDetailsTrainee.error
       ? getApiErrorMessage(queryTrainees.error || queryDetailsTrainee.error, 'Não foi possível carregar os alunos.') : null,
     retry: () => { void queryTrainees.refetch(); if (traineeSelectedId) void queryDetailsTrainee.refetch(); },
-    trainees: queryTrainees.data ?? [],
+    trainees,
     traineSelected: queryDetailsTrainee.data ?? null,
     setTraineeSelectedId,
     traineeSelectedId,

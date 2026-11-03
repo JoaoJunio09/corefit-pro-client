@@ -35,7 +35,7 @@ const getStatusLabel = (status: boolean) => {
 export default function Dashboard() {
   const [mounted, setMounted] = useState(false);
 
-  const { dashboard, error, retry } = useDashboard();
+  const { dashboard, error, retry, percentageCompletedToday, percentageCompletedTodayLabel } = useDashboard();
 
   useEffect(() => {
     setMounted(true);
@@ -82,10 +82,10 @@ export default function Dashboard() {
                       className="cf-progress-circle-value"
                       cx="50" cy="50" r="40"
                       strokeDasharray="251"
-                      strokeDashoffset={251 - (251 * dashboard.percentageWorkoutsCompletedToday) / 100}
+                      strokeDashoffset={251 - (251 * percentageCompletedToday) / 100}
                     />
                   </svg>
-                  <span className="cf-progress-circle-text">{dashboard.percentageWorkoutsCompletedToday}%</span>
+                  <span className="cf-progress-circle-text">{percentageCompletedTodayLabel}</span>
                 </div>
               )}
 

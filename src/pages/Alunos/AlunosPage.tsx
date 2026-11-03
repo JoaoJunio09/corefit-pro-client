@@ -46,6 +46,7 @@ export default function AlunosPage() {
   const [trainingPlanMode, setTrainingPlanMode] = useState<'create' | 'edit' | 'new' | null>(null);
 
   const {
+    displayPercentage, displayPercentageLabel,
     detailsTab, setDetailsTab, handleDetailsTabKeyDown,
     loading, loadError, retry,
     trainees,
@@ -105,7 +106,6 @@ export default function AlunosPage() {
     ? traineSelected?.trainee.avatarUrl
     : avatarDefault;
 
-  const displayPercentage = Math.trunc(traineSelected?.trainee.weeklyProgressPercentage ?? 0);
 
   const [visiblePhotos, setVisiblePhotos] = useState<VisiblePhotos>({
     front: true,
@@ -475,9 +475,9 @@ export default function AlunosPage() {
                 <div className="cf-goal-progress-box">
                   <div className="cf-goal-progress-top">
                     <span className="cf-goal-count">
-                      {traineSelected.completedTrainings ?? traineSelected.completedTrainings} de {traineSelected.totalTrainings ?? traineSelected.totalTrainings} treinos
+                      {traineSelected.completedTrainings} de {traineSelected.totalTrainings} treinos
                     </span>
-                    <span className="cf-goal-pct">{displayPercentage}% concluído</span>
+                    <span className="cf-goal-pct">{displayPercentageLabel} concluído</span>
                   </div>
                   <div className="cf-progress-bar">
                     <div className="cf-progress-fill" style={{ width: `${displayPercentage}%` }}></div>
@@ -766,7 +766,7 @@ export default function AlunosPage() {
                     <span>
                       <strong>{traineSelected.completedTrainings}</strong> de <strong>{traineSelected.totalTrainings}</strong> treinos concluídos
                     </span>
-                    <div className="cf-calendar-progress-mini-bar" title={`${displayPercentage}% concluído`}>
+                    <div className="cf-calendar-progress-mini-bar" title={`${displayPercentageLabel} concluído`}>
                       <div
                         className="cf-calendar-progress-mini-fill"
                         style={{ width: `${displayPercentage}%` }}
@@ -905,7 +905,7 @@ export default function AlunosPage() {
 
             <div className="cf-alunos-grid">
               {filteredAlunos.map((trainee) => {
-                const displayPercentage = Math.trunc(trainee.weeklyProgressPercentage ?? 0);
+                const displayPercentage = trainee.weeklyProgressPercentage;
 
                 return (
                   <div
@@ -955,7 +955,7 @@ export default function AlunosPage() {
                     <div className="cf-progress-container">
                       <div className="cf-progress-header">
                         <span>Progresso Semanal</span>
-                        <strong>{displayPercentage}%</strong>
+                        <strong>{trainee.weeklyProgressLabel}</strong>
                       </div>
                       <div className="cf-progress-bar">
                         <div className="cf-progress-fill" style={{ width: `${displayPercentage}%` }}></div>

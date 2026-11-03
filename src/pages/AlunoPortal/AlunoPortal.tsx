@@ -263,7 +263,7 @@ export default function AlunoPortal() {
                       {completed}
                       <small> / {total}</small>
                     </strong>
-                    <p>treinos concluídos na semana</p>
+                    <p>treinos concluídos na semana · {portal.progressLabel}</p>
                     <div
                       className="cf-student-progress-bar"
                       role="progressbar"

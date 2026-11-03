@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useAuthContext } from "../../../context/AuthContext";
 import StudentService from "../../../services/StudentService";
 import { apiError } from "../../../utils/apiError";
+import { calculateWorkoutPercentage, formatWorkoutPercentage } from '../../../utils/workoutProgress';
 
 export const WEEK_DAYS = [
   { value: "MONDAY", label: "Segunda-feira", short: "SEG" },
@@ -72,7 +73,7 @@ export default function useAlunoPortal() {
   const completed =
     plan?.trainings.filter((item) => item.completed).length ?? 0;
   const total = plan?.trainings.length ?? 0;
-  const progress = total ? Math.round((completed / total) * 100) : 0;
+  const progress = calculateWorkoutPercentage(completed, total);
   const selected = plan?.trainings.find((item) => item.id === itemId);
   const selectedDay = days.find((day) => day.item?.id === itemId);
   const today = days[todayIndex];
@@ -87,6 +88,7 @@ export default function useAlunoPortal() {
     completed,
     total,
     progress,
+    progressLabel: formatWorkoutPercentage(progress),
     loading: query.isLoading,
     error: query.error
       ? apiError(query.error, "Não foi possível carregar seus treinos.")
