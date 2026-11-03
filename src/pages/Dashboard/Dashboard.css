@@ -1,0 +1,498 @@
+/* ============================================================================
+   DASHBOARD.CSS
+   ============================================================================
+   Estilos ESPECÍFICOS da página Dashboard.
+   Os tokens de tema (cores, sombras, radius) vêm de:
+   src/styles/light.css e src/styles/dark.css (CSS Variables).
+   ============================================================================ */
+
+/* --- GLOBAL APP CONTAINER (wrapper da página) --- */
+.cf-app-wrapper {
+  background-color: var(--cf-bg);
+  color: var(--cf-text-primary);
+  min-height: 100vh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  padding: 1.5rem 1rem 3rem 1rem;
+  box-sizing: border-box;
+}
+
+.cf-app-wrapper * {
+  box-sizing: border-box;
+}
+
+.cf-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* --- TYPOGRAPHY & UTILS --- */
+.cf-h1 { font-size: 1.75rem; font-weight: 700; margin: 0; letter-spacing: -0.02em; color: var(--cf-text-primary); }
+.cf-h2 { font-size: 1.125rem; font-weight: 600; margin: 0; color: var(--cf-text-primary); display: flex; align-items: center; gap: 0.5rem; }
+.cf-h3 { font-size: 0.95rem; font-weight: 600; margin: 0; color: var(--cf-text-primary); }
+
+.cf-text-body { font-size: 0.95rem; color: var(--cf-text-secondary); margin: 0; line-height: 1.5; }
+.cf-text-small { font-size: 0.85rem; color: var(--cf-text-muted); margin: 0; }
+.cf-text-primary-color { color: var(--cf-primary); }
+
+.cf-flex-between { display: flex; justify-content: space-between; align-items: center; }
+.cf-flex-center { display: flex; align-items: center; gap: 0.5rem; }
+
+/* --- BUTTONS --- */
+.cf-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  border-radius: 99px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  outline: none;
+  text-decoration: none;
+}
+.cf-btn--primary {
+  background-color: var(--cf-primary);
+  color: #FFF;
+  box-shadow: 0 4px 12px var(--cf-primary-alpha);
+}
+.cf-btn--primary:hover {
+  background-color: var(--cf-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px var(--cf-primary-alpha);
+}
+.cf-btn--secondary {
+  background-color: var(--cf-surface-elevated);
+  color: var(--cf-text-primary);
+  border-color: var(--cf-border);
+}
+.cf-btn--secondary:hover {
+  background-color: var(--cf-surface-hover);
+  border-color: var(--cf-border-strong);
+}
+.cf-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--cf-surface);
+  border: 1px solid var(--cf-border);
+  color: var(--cf-text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.cf-btn-icon:hover {
+  color: var(--cf-text-primary);
+  border-color: var(--cf-border-strong);
+  background-color: var(--cf-surface-hover);
+}
+
+/* --- TOP NAVBAR (Micro) --- */
+.cf-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.5rem;
+}
+.cf-brand {
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.04em;
+  color: var(--cf-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.cf-brand-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--cf-primary);
+  border-radius: 50%;
+}
+
+/* --- HERO SECTION --- */
+.cf-hero {
+  background-color: var(--cf-surface-hero);
+  border: 1px solid var(--cf-border);
+  border-radius: 24px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--cf-shadow-sm);
+}
+/* Subtle decorative background element */
+.cf-hero::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--cf-primary-alpha) 0%, transparent 60%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cf-hero-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+@media (min-width: 768px) {
+  .cf-hero-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.cf-hero-text { flex: 1; }
+.cf-hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background-color: var(--cf-surface);
+  padding: 1rem 1.5rem;
+  border-radius: 16px;
+  border: 1px solid var(--cf-border);
+  box-shadow: var(--cf-shadow-sm);
+}
+
+/* Circular Progress */
+.cf-progress-circle-wrap {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cf-progress-circle-bg {
+  fill: none;
+  stroke: var(--cf-border);
+  stroke-width: 6;
+}
+.cf-progress-circle-value {
+  fill: none;
+  stroke: var(--cf-primary);
+  stroke-width: 6;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+.cf-progress-circle-text {
+  position: absolute;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--cf-text-primary);
+}
+.cf-hero-stat-info { display: flex; flex-direction: column; }
+.cf-hero-stat-value { font-size: 1.5rem; font-weight: 800; line-height: 1; margin-bottom: 0.25rem; }
+
+.cf-hero-metrics-bar {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--cf-divider);
+  position: relative;
+  z-index: 1;
+}
+.cf-metric-mini { display: flex; flex-direction: column; gap: 0.25rem; }
+.cf-metric-val { font-size: 1.125rem; font-weight: 700; color: var(--cf-text-primary); }
+.cf-metric-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--cf-text-muted); }
+
+/* --- MAIN GRID COMPOSITION --- */
+.cf-dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 1024px) {
+  .cf-dashboard-grid {
+    grid-template-columns: 2fr 1fr;
+    align-items: start;
+  }
+}
+
+.cf-stack { display: flex; flex-direction: column; gap: 1.5rem; }
+
+/* --- CARDS & PANELS --- */
+.cf-panel {
+  background-color: var(--cf-surface);
+  border-radius: 20px;
+  border: 1px solid var(--cf-border);
+  box-shadow: var(--cf-shadow-sm);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.cf-panel-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--cf-divider);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cf-panel-body {
+  padding: 1.5rem;
+}
+
+/* --- AVATAR & BADGES --- */
+.cf-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--cf-badge-bg);
+  color: var(--cf-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+.cf-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background-color: var(--cf-badge-bg);
+  color: var(--cf-badge-text);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.cf-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.cf-status-pill::before {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.cf-status-pill.completed { background-color: var(--cf-status-completed-bg); color: var(--cf-status-completed); }
+.cf-status-pill.completed::before { background-color: var(--cf-status-completed); }
+
+.cf-status-pill.in_progress { background-color: var(--cf-status-progress-bg); color: var(--cf-status-progress); }
+.cf-status-pill.in_progress::before { background-color: var(--cf-status-progress); }
+
+.cf-status-pill.pending { background-color: var(--cf-status-pending-bg); color: var(--cf-status-pending); }
+.cf-status-pill.pending::before { background-color: var(--cf-status-pending); }
+
+/* --- RICH LIST (Trainings) --- */
+.cf-list-rich {
+  display: flex;
+  flex-direction: column;
+}
+.cf-list-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--cf-divider);
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+.cf-list-row:last-child { border-bottom: none; }
+.cf-list-row:hover { background-color: var(--cf-surface-hover); }
+
+.cf-list-col-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.cf-list-col-meta {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+}
+@media (min-width: 640px) {
+  .cf-list-col-meta { display: flex; }
+}
+.cf-list-col-status {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 110px;
+  justify-content: flex-end;
+}
+.cf-row-action {
+  color: var(--cf-border-strong);
+  transition: color 0.2s ease;
+  transform: translateX(-4px);
+  opacity: 0;
+}
+.cf-list-row:hover .cf-row-action {
+  color: var(--cf-text-secondary);
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* --- WEEKLY VIEW (Visual Dots Rhythm) --- */
+.cf-week-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 1.5rem;
+  background-color: var(--cf-surface);
+  border-radius: 20px;
+  border: 1px solid var(--cf-border);
+  box-shadow: var(--cf-shadow-sm);
+}
+.cf-day-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+}
+.cf-day-dots {
+  display: flex;
+  flex-direction: column-reverse; /* Bottom to top */
+  gap: 4px;
+  height: 80px; /* Fixed height container */
+  justify-content: flex-start;
+}
+.cf-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px; /* Slightly squared dots for techy-fitness feel */
+  background-color: var(--cf-border);
+  transition: background-color 0.3s ease;
+}
+.cf-dot.filled { background-color: var(--cf-primary); }
+
+.cf-day-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--cf-text-muted);
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+}
+.cf-day-col.is-today .cf-day-label {
+  background-color: var(--cf-primary-light);
+  color: var(--cf-primary);
+}
+.cf-day-fraction { font-size: 0.7rem; font-weight: 700; color: var(--cf-text-secondary); }
+
+/* --- ATTENTION CARDS --- */
+.cf-attention-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.cf-attention-card {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: var(--cf-surface-hover);
+  border-left: 4px solid transparent;
+  transition: transform 0.2s ease;
+}
+.cf-attention-card:hover { transform: translateX(2px); }
+
+.cf-attention-card.high {
+  background-color: var(--cf-alert-high-bg);
+  border-left-color: var(--cf-alert-high);
+}
+.cf-attention-card.medium {
+  background-color: var(--cf-alert-medium-bg);
+  border-left-color: var(--cf-alert-medium);
+}
+.cf-attention-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.cf-attention-action {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--cf-text-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  margin-top: 0.25rem;
+  cursor: pointer;
+}
+
+/* --- TIMELINE (Recent Activity) --- */
+.cf-timeline-wrap {
+  position: relative;
+  padding-left: 1rem;
+}
+.cf-timeline-wrap::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  bottom: 0;
+  left: 4px;
+  width: 2px;
+  background-color: var(--cf-border);
+  border-radius: 2px;
+}
+.cf-timeline-item {
+  position: relative;
+  padding-bottom: 1.5rem;
+  padding-left: 1.25rem;
+}
+.cf-timeline-item:last-child { padding-bottom: 0; }
+
+.cf-timeline-marker {
+  position: absolute;
+  left: -1.25rem;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--cf-surface);
+  border: 2px solid var(--cf-border-strong);
+  z-index: 1;
+}
+.cf-timeline-item:first-child .cf-timeline-marker {
+  border-color: var(--cf-primary);
+  background-color: var(--cf-primary);
+  box-shadow: 0 0 0 4px var(--cf-primary-light);
+}
+
+.cf-timeline-time {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--cf-text-muted);
+  margin-bottom: 0.15rem;
+}
+.cf-timeline-text {
+  font-size: 0.9rem;
+  color: var(--cf-text-secondary);
+  line-height: 1.4;
+}
+.cf-timeline-highlight {
+  font-weight: 600;
+  color: var(--cf-text-primary);
+}

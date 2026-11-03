@@ -1,0 +1,9 @@
+.cf-more-page { width: 100%; }
+.cf-more-heading > span { display: block; margin-bottom: .35rem; color: var(--cf-primary); font-size: .75rem; font-weight: 700; letter-spacing: .08em; }
+.cf-more-heading .cf-h1 { margin: 0; }
+.cf-more-heading .cf-text-body { margin-top: .45rem; }
+.cf-more-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 380px)); gap: 1rem; }
+.cf-more-card { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1rem; padding: 1.25rem; border: 1px solid var(--cf-border); border-radius: var(--cf-radius-xl); background: var(--cf-surface); color: var(--cf-text-primary); text-decoration: none; box-shadow: var(--cf-shadow-sm); transition: transform .2s ease, border-color .2s ease; }
+.cf-more-card:hover { transform: translateY(-2px); border-color: var(--cf-primary); }
+.cf-more-icon { display: grid; width: 48px; height: 48px; place-items: center; border-radius: 12px; background: var(--cf-primary-light); color: var(--cf-primary); }
+.cf-more-card h2, .cf-more-card p { margin: 0; }.cf-more-card h2 { font-size: 1rem; }.cf-more-card p { margin-top: .3rem; color: var(--cf-text-muted); font-size: .85rem; line-height: 1.45; }.cf-more-card > span { color: var(--cf-primary); font-size: 1.4rem; }

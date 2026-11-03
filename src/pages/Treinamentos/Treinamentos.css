@@ -1,0 +1,449 @@
+/* ============================================================================
+   TREINAMENTOS.CSS - UI Polish
+   Foco em elegância, hierarquia, respiro e consistência com SaaS modernos.
+   Consome estritamente as variáveis globais (--cf-*).
+   ============================================================================ */
+
+/* Animações Sutis */
+@keyframes trFadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes trFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.tr-page-wrapper {
+  background-color: var(--cf-bg);
+  color: var(--cf-text-primary);
+  min-height: 100vh;
+  padding: 1.5rem 1.5rem 4rem 1.5rem;
+  box-sizing: border-box;
+  font-family: 'Inter', -apple-system, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tr-container {
+  max-width: 1400px; /* Levemente mais estreito para melhor legibilidade */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  animation: trFadeIn 0.4s ease-out;
+}
+
+/* Tipografia Refinada */
+.cf-h1 { font-size: 1.85rem; font-weight: 700; margin: 0; letter-spacing: -0.03em; color: var(--cf-text-primary); }
+.cf-h2 { font-size: 1.15rem; font-weight: 600; margin: 0; color: var(--cf-text-primary); display: flex; align-items: center; gap: 0.5rem; letter-spacing: -0.01em; }
+.cf-h3 { font-size: 1.05rem; font-weight: 600; margin: 0; color: var(--cf-text-primary); letter-spacing: -0.01em; }
+.cf-text-body { font-size: 0.95rem; color: var(--cf-text-secondary); margin: 0; line-height: 1.6; }
+.cf-text-muted { font-size: 0.85rem; color: var(--cf-text-muted); margin: 0; }
+
+/* Botões Padronizados e Elegantes */
+.cf-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 99px;
+  font-size: 0.875rem;
+  font-weight: 500; /* Reduzido de 600 para mais elegância */
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid transparent;
+  outline: none;
+}
+.cf-btn:focus-visible {
+  box-shadow: 0 0 0 3px var(--cf-border), 0 0 0 4px var(--cf-text-primary);
+}
+.cf-btn--primary {
+  background-color: var(--cf-primary);
+  color: #FFF;
+  box-shadow: 0 2px 8px var(--cf-primary-alpha);
+}
+.cf-btn--primary:hover {
+  background-color: var(--cf-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--cf-primary-alpha);
+}
+.cf-btn--primary:active {
+  transform: translateY(0);
+}
+.cf-btn--secondary {
+  background-color: var(--cf-surface);
+  color: var(--cf-text-primary);
+  border-color: var(--cf-border-strong);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+}
+.cf-btn--secondary:hover {
+  background-color: var(--cf-surface-hover);
+}
+.cf-btn--ghost {
+  background-color: transparent;
+  color: var(--cf-text-secondary);
+}
+.cf-btn--ghost:hover {
+  background-color: var(--cf-surface-hover);
+  color: var(--cf-text-primary);
+}
+.cf-btn--danger {
+  background-color: var(--cf-danger-bg, rgba(239, 68, 68, 0.1));
+  color: var(--cf-danger, #EF4444);
+}
+.cf-btn--danger:hover {
+  background-color: var(--cf-danger, #EF4444);
+  color: #FFF;
+}
+.cf-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: var(--cf-text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.cf-btn-icon:hover {
+  color: var(--cf-text-primary);
+  background-color: var(--cf-surface-hover);
+}
+.cf-btn-icon.tr-btn-delete:hover {
+  color: var(--cf-danger, #EF4444);
+  background-color: var(--cf-danger-bg, rgba(239, 68, 68, 0.1));
+}
+
+/* Header e Toolbar */
+.tr-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.tr-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 30px;
+}
+@media (min-width: 640px) {
+  .tr-toolbar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/* Busca Estilo SaaS */
+.tr-search-box {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: var(--cf-surface);
+  border: 1px solid var(--cf-border);
+  border-radius: 12px; /* Mudança de pill para rounded rect suave */
+  padding: 0.6rem 1rem;
+  flex: 1;
+  max-width: 100%;
+  color: var(--cf-text-muted);
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.01);
+}
+.tr-search-box:focus-within {
+  border-color: var(--cf-primary);
+  box-shadow: 0 0 0 3px var(--cf-primary-alpha);
+  background-color: var(--cf-surface-elevated);
+}
+.tr-search-box input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.95rem;
+  width: 100%;
+  color: var(--cf-text-primary);
+  font-family: inherit;
+}
+.tr-search-box input::placeholder {
+  color: var(--cf-text-muted);
+}
+
+/* Grid e Cards Refinados */
+.tr-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+@media (min-width: 768px) {
+  .tr-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .tr-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.tr-card {
+  background-color: var(--cf-surface);
+  border: 1px solid var(--cf-border);
+  border-radius: 16px; /* Raio levemente reduzido para mais sofisticação */
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02); /* Sombra super sutil */
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.tr-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--cf-shadow-md);
+  border-color: var(--cf-border-strong);
+}
+.tr-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.tr-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Badges e Metadados */
+.tr-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+.tr-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.6rem;
+  background-color: var(--cf-surface-hover);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--cf-text-secondary);
+}
+
+/* Ações do Card */
+.tr-card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--cf-divider);
+}
+.tr-card-actions-left {
+  display: flex;
+  gap: 0.25rem;
+}
+
+/* Painéis (Formulários/Detalhes) */
+.tr-panel {
+  background-color: var(--cf-surface);
+  border: 1px solid var(--cf-border);
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: trFadeInUp 0.3s ease-out;
+}
+
+/* Formulário Refinado */
+.tr-form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+@media (min-width: 640px) {
+  .tr-form-row { flex-direction: row; }
+}
+.tr-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+.tr-form-group label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--cf-text-primary);
+}
+.tr-form-group input, .tr-form-group textarea {
+  background-color: var(--cf-bg);
+  border: 1px solid var(--cf-border);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  color: var(--cf-text-primary);
+  outline: none;
+  transition: all 0.2s;
+  font-family: inherit;
+  line-height: 1.5;
+}
+.tr-form-group input:focus, .tr-form-group textarea:focus {
+  border-color: var(--cf-primary);
+  box-shadow: 0 0 0 3px var(--cf-primary-alpha);
+  background-color: var(--cf-surface);
+}
+.tr-form-group textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+/* Builder de Exercícios */
+.tr-exercise-builder { position: relative; }
+.tr-search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--cf-surface-elevated);
+  border: 1px solid var(--cf-border-strong);
+  border-radius: 12px;
+  margin-top: 0.5rem;
+  max-height: 280px;
+  overflow-y: auto;
+  box-shadow: var(--cf-shadow-md);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  animation: trFadeInUp 0.2s ease-out;
+}
+.tr-dropdown-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 1.25rem;
+  cursor: pointer;
+  border-bottom: 1px solid var(--cf-divider);
+  transition: background-color 0.2s;
+}
+.tr-dropdown-item:last-child { border-bottom: none; }
+.tr-dropdown-item:hover { background-color: var(--cf-surface-hover); }
+.tr-dropdown-info { display: flex; flex-direction: column; gap: 0.25rem; }
+.tr-ex-name { font-weight: 600; color: var(--cf-text-primary); font-size: 0.95rem; }
+.tr-ex-group { font-size: 0.75rem; color: var(--cf-text-muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;}
+.tr-dropdown-action { font-size: 0.85rem; font-weight: 600; color: var(--cf-primary); opacity: 0; transition: opacity 0.2s; }
+.tr-dropdown-item:hover .tr-dropdown-action { opacity: 1; }
+
+/* Configuração do Exercício Selecionado */
+.tr-exercise-config {
+  background-color: var(--cf-surface-elevated);
+  border: 1px solid var(--cf-border-strong);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  animation: trFadeIn 0.3s ease-out;
+}
+.tr-config-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed var(--cf-border);
+}
+.tr-btn-clear {
+  background: none;
+  border: none;
+  color: var(--cf-text-secondary);
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.tr-btn-clear:hover { color: var(--cf-text-primary); }
+
+/* Lista de Exercícios Adicionados (Visual Clean) */
+.tr-added-exercises {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.tr-exercise-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: transparent;
+  border-bottom: 1px solid var(--cf-divider);
+  transition: background-color 0.2s;
+}
+.tr-exercise-row:last-child { border-bottom: none; }
+.tr-exercise-row:hover {
+  background-color: var(--cf-surface-hover);
+}
+.tr-ex-number {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--cf-text-muted);
+  width: 28px;
+  text-align: right;
+  opacity: 0.6;
+}
+.tr-ex-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.tr-ex-reps { font-size: 0.85rem; color: var(--cf-text-secondary); }
+
+/* Modais e Empty States */
+.tr-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 5rem 1rem;
+  background-color: transparent;
+  border: 1px dashed var(--cf-border-strong);
+  border-radius: 16px;
+  color: var(--cf-text-secondary);
+  gap: 1rem;
+}
+.tr-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  backdrop-filter: blur(4px);
+  animation: trFadeIn 0.2s ease-out;
+}
+.tr-modal {
+  background-color: var(--cf-surface);
+  border-radius: 20px;
+  padding: 2.5rem;
+  width: 90%;
+  max-width: 440px;
+  box-shadow: var(--cf-shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  animation: trFadeInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.tr-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}

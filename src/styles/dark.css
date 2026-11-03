@@ -1,0 +1,49 @@
+/* ============================================================================
+   DARK.CSS
+   Tokens visuais (CSS Variables) do Dark Mode.
+   ============================================================================ */
+
+html[data-theme='dark'],
+[data-theme='dark'] {
+  --cf-bg: #0B0D10;
+  --cf-surface: #15181E;
+  --cf-surface-hero: #15181E;
+  --cf-surface-hover: #1C2027;
+  --cf-surface-elevated: #1F232B;
+
+  --cf-primary: #F0533C;
+  --cf-primary-hover: #FF6A54;
+  --cf-primary-light: rgba(240, 83, 60, 0.15);
+  --cf-primary-alpha: rgba(240, 83, 60, 0.1);
+
+  --cf-accent: #FFA033;
+
+  --cf-text-primary: #F8F9FA;
+  --cf-text-secondary: #9AA4B0;
+  --cf-text-muted: #646E7A;
+
+  --cf-border: #222730;
+  --cf-border-strong: #333945;
+  --cf-divider: rgba(255, 255, 255, 0.05);
+
+  --cf-shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.2);
+  --cf-shadow-md: 0 12px 32px rgba(0, 0, 0, 0.4);
+  --cf-shadow-calendar: 0 12px 32px -4px rgba(0, 0, 0, 0.6);
+
+  --cf-status-completed: #10B981;
+  --cf-status-completed-bg: rgba(16, 185, 129, 0.15);
+
+  --cf-status-progress: #F59E0B;
+  --cf-status-progress-bg: rgba(245, 158, 11, 0.15);
+
+  --cf-status-pending: #64748B;
+  --cf-status-pending-bg: rgba(100, 116, 139, 0.15);
+
+  --cf-alert-high: #F87171;
+  --cf-alert-high-bg: rgba(248, 113, 113, 0.15);
+  --cf-alert-medium: #FBBF24;
+  --cf-alert-medium-bg: rgba(251, 191, 36, 0.15);
+
+  --cf-badge-bg: #222730;
+  --cf-badge-text: #9AA4B0;
+}

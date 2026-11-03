@@ -1,0 +1,1577 @@
+/* ============================================================================
+   ALUNOSPAGE.CSS
+   Estilos da página de Alunos integrados às variáveis globais de tema.
+   ============================================================================ */
+
+.cf-alunos-page {
+  --cf-radius-sm: 8px;
+  --cf-radius-md: 12px;
+  --cf-radius-lg: 16px;
+  --cf-radius-xl: 20px;
+  --cf-radius-full: 9999px;
+
+  --cf-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --cf-transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --cf-transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  --cf-space-xs: 4px;
+  --cf-space-sm: 8px;
+  --cf-space-md: 16px;
+  --cf-space-lg: 24px;
+  --cf-space-xl: 32px;
+  
+  width: 100%;
+}
+
+.cf-alunos-page--creating {
+  max-width: none;
+}
+
+/* Header Controls */
+.cf-alunos-page .cf-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--cf-space-md);
+}
+.cf-alunos-page .cf-header-title h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--cf-text-primary);
+}
+.cf-alunos-page .cf-header-title p {
+  margin: 4px 0 0 0;
+  color: var(--cf-text-muted);
+  font-size: 0.9rem;
+}
+.cf-alunos-page .cf-theme-toggle {
+  background: var(--cf-surface);
+  border: 1px solid var(--cf-border);
+  color: var(--cf-text-primary);
+  padding: var(--cf-space-sm) var(--cf-space-md);
+  border-radius: var(--cf-radius-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--cf-space-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all var(--cf-transition-fast);
+}
+.cf-alunos-page .cf-theme-toggle:hover {
+  background: var(--cf-surface-hover);
+  border-color: var(--cf-border-strong);
+}
+.cf-alunos-page .cf-theme-toggle:focus-visible {
+  outline: 2px solid var(--cf-primary);
+  outline-offset: 2px;
+}
+
+/* Toolbar: Search and Filters */
+.cf-alunos-page .cf-alunos-actions {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.cf-alunos-page .cf-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cf-space-md);
+  margin-bottom: var(--cf-space-xl);
+  align-items: center;
+  justify-content: space-between;
+}
+.cf-alunos-page .cf-search-box {
+  position: relative;
+  flex: 1;
+  min-width: 280px;
+}
+.cf-alunos-page .cf-search-box svg {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--cf-text-muted);
+}
+.cf-alunos-page .cf-search-input {
+  width: 100%;
+  padding: 10px 16px 10px 42px;
+  border-radius: var(--cf-radius-md);
+  border: 1px solid var(--cf-border);
+  background: var(--cf-surface);
+  color: var(--cf-text-primary);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color var(--cf-transition-fast), box-shadow var(--cf-transition-fast);
+}
+.cf-alunos-page .cf-search-input:focus {
+  border-color: var(--cf-primary);
+  box-shadow: 0 0 0 3px var(--cf-primary-light);
+}
+.cf-alunos-page .cf-filter-pills {
+  display: flex;
+  gap: var(--cf-space-xs);
+  background: var(--cf-surface);
+  padding: var(--cf-space-xs);
+  border-radius: var(--cf-radius-md);
+  border: 1px solid var(--cf-border);
+}
+.cf-alunos-page .cf-filter-pill {
+  padding: var(--cf-space-xs) var(--cf-space-md);
+  border-radius: var(--cf-radius-sm);
+  border: none;
+  background: transparent;
+  color: var(--cf-text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--cf-transition-fast);
+}
+.cf-alunos-page .cf-filter-pill:hover {
+  color: var(--cf-text-primary);
+}
+.cf-alunos-page .cf-filter-pill.active {
+  background: var(--cf-primary);
+  color: #ffffff;
+}
+.cf-alunos-page .cf-filter-pill:focus-visible {
+  outline: 2px solid var(--cf-primary);
+  outline-offset: 1px;
+}
+
+/* Grid Lista de Alunos */
+.cf-alunos-page .cf-alunos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--cf-space-lg);
+}
+.cf-alunos-page .cf-aluno-card {
+  background: var(--cf-surface);
+  border: 1px solid var(--cf-border);
+  border-radius: var(--cf-radius-lg);
+  padding: var(--cf-space-lg);
+  cursor: pointer;
+  transition: transform var(--cf-transition-fast), box-shadow var(--cf-transition-fast), border-color var(--cf-transition-fast);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cf-alunos-page .cf-aluno-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--cf-shadow-md);
+  border-color: var(--cf-primary);
+}
+.cf-alunos-page .cf-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--cf-space-md);
+  margin-bottom: var(--cf-space-md);
+}
+.cf-alunos-page .cf-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--cf-radius-full);
+  object-fit: cover;
+  border: 2px solid var(--cf-primary-light);
+}
+.cf-alunos-page .cf-aluno-info h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--cf-text-primary);
+}
+.cf-alunos-page .cf-aluno-info p {
+  margin: 2px 0 0 0;
+  font-size: 0.8rem;
+  color: var(--cf-text-muted);
+}
+.cf-alunos-page .cf-status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: var(--cf-radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-left: auto;
+}
+.cf-alunos-page .cf-status-badge.ativo {
+  background: var(--cf-status-completed-bg);
+  color: var(--cf-status-completed);
+}
+.cf-alunos-page .cf-status-badge.inativo {
+  background: var(--cf-alert-high-bg);
+  color: var(--cf-alert-high);
+}
+.cf-alunos-page .cf-status-badge.pendente {
+  background: var(--cf-status-progress-bg);
+  color: var(--cf-status-progress);
+}
+.cf-alunos-page .cf-card-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--cf-space-sm);
+  margin-bottom: var(--cf-space-md);
+  background: var(--cf-surface-elevated);
+  padding: var(--cf-space-sm) var(--cf-space-md);
+  border-radius: var(--cf-radius-md);
+}
+.cf-alunos-page .cf-detail-item {
+  display: flex;
+  flex-direction: column;
+}
+.cf-alunos-page .cf-detail-item span.label {
+  font-size: 0.75rem;
+  color: var(--cf-text-muted);
+}
+.cf-alunos-page .cf-detail-item span.val {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--cf-text-primary);
+}
+.cf-alunos-page .cf-progress-container {
+  margin-top: var(--cf-space-xs);
+}
+.cf-alunos-page .cf-progress-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--cf-text-secondary);
+  margin-bottom: 6px;
+}
+.cf-alunos-page .cf-progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--cf-surface-elevated);
+  border-radius: var(--cf-radius-full);
+  overflow: hidden;
+}
+.cf-alunos-page .cf-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--cf-primary) 0%, var(--cf-accent) 100%);
+  border-radius: var(--cf-radius-full);
+  transition: width var(--cf-transition-normal);
+}
+
+/* Detalhes do Aluno Selected */
+.cf-alunos-page .cf-btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--cf-space-xs);
+  background: transparent;
+  border: none;
+  color: var(--cf-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-bottom: var(--cf-space-md);
+  padding: var(--cf-space-xs) 0;
+  transition: opacity var(--cf-transition-fast);
+}
+.cf-alunos-page .cf-btn-back:hover {
+  opacity: 0.8;
+}
+.cf-alunos-page .cf-btn-back:focus-visible {
+  outline: 2px solid var(--cf-primary);
+  border-radius: var(--cf-radius-sm);
+}
+
+/* HERO DO PERFIL DO ALUNO */
+.cf-alunos-page .cf-aluno-detail-hero {
+  background: var(--cf-surface);
+  border: 1px solid var(--cf-border);
+  border-radius: var(--cf-radius-xl);
+  padding: var(--cf-space-lg) var(--cf-space-xl);
+  margin-bottom: var(--cf-space-md);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--cf-space-lg);
+}
+.cf-alunos-page .cf-detail-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--cf-radius-full);
+  border: 3px solid var(--cf-primary);
+  object-fit: cover;
+}
+.cf-alunos-page .cf-detail-main-info {
+  flex: 1;
+}
+.cf-alunos-page .cf-detail-main-info h2 {
+  margin: 0 0 6px 0;
+  font-size: 1.5rem;
+  color: var(--cf-text-primary);
+}
+.cf-alunos-page .cf-detail-tags {
+  display: flex;
+  gap: var(--cf-space-xs);
+  align-items: center;
+  flex-wrap: wrap;
+}
+.cf-alunos-page .cf-tag {
+  background: var(--cf-surface-elevated);
+  color: var(--cf-text-secondary);
+  font-size: 0.8rem;
+  padding: 3px 10px;
+  border-radius: var(--cf-radius-sm);
+  font-weight: 500;
+}
+
+/* CONTEXTO DO PLANO INTEGRADO */
+.cf-alunos-page .cf-plan-context-strip {
+  background: var(--cf-surface);
+  border: 1px solid var(--cf-border);
+  border-radius: var(--cf-radius-xl);
+  padding: var(--cf-space-lg) var(--cf-space-xl);
+  margin-bottom: var(--cf-space-xl);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.2fr;
+  gap: var(--cf-space-xl);
+  align-items: start;
+}
+@media (max-width: 960px) {
+  .cf-alunos-page .cf-plan-context-strip {
+    grid-template-columns: 1fr;
+    gap: var(--cf-space-lg);
+  }
+}
+.cf-alunos-page .cf-context-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.cf-alunos-page .cf-context-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--cf-text-muted);
+}
+.cf-alunos-page .cf-context-objective {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--cf-primary);
+  line-height: 1.25;
+}
+.cf-alunos-page .cf-context-value {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--cf-text-primary);
+}
+.cf-alunos-page .cf-context-desc {
+  font-size: 0.85rem;
+  color: var(--cf-text-secondary);
+  line-height: 1.4;
+  margin-top: 2px;
+}
+.cf-alunos-page .cf-goal-progress-box {
+  background: var(--cf-surface-elevated);
+  padding: var(--cf-space-md);
+  border-radius: var(--cf-radius-lg);
+  border: 1px solid var(--cf-border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.cf-alunos-page .cf-goal-progress-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.cf-alunos-page .cf-goal-count {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--cf-text-primary);
+}
+.cf-alunos-page .cf-goal-pct {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--cf-primary);
+}
+
+/* AVALIAÇÃO FÍSICA - 100% DA LARGURA */
+.cf-alunos-page .cf-eval-panel-full {
+  width: 100%;
+  background: var(--cf-surface);
+  border: 1px solid var(--cf-border);
+  border-radius: var(--cf-radius-xl);
+  padding: var(--cf-space-xl);
+  margin-bottom: var(--cf-space-xl);
+}
+.cf-alunos-page .cf-eval-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--cf-space-lg);
+  padding-bottom: var(--cf-space-sm);
+  border-bottom: 1px solid var(--cf-border);
+  flex-wrap: wrap;
+  gap: var(--cf-space-md);
+}
+.cf-alunos-page .cf-eval-panel-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: var(--cf-space-sm);
+  color: var(--cf-text-primary);
+}
+.cf-alunos-page .cf-eval-panel-header h3 svg {
+  color: var(--cf-primary);
+}
+.cf-alunos-page .cf-eval-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--cf-space-md);
+}
+
+.cf-alunos-page .cf-training-plan-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .75rem; margin: 1rem 0; }
+.cf-alunos-page .cf-eval-date-tag {
+  font-size: 0.85rem;
+  color: var(--cf-text-muted);
+  font-weight: 500;
+}
+.cf-alunos-page .cf-btn-action {
+  background: var(--cf-primary-light);
+  color: var(--cf-primary);
+  border: 1px solid var(--cf-primary);
+  padding: var(--cf-space-xs) var(--cf-space-md);
+  border-radius: var(--cf-radius-md);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--cf-transition-fast);
+}
+.cf-alunos-page .cf-btn-action:hover {
+  background: var(--cf-primary);
+  color: #ffffff;
+}
+
+.cf-alunos-page .cf-btn-action--secondary {
+  border-color: var(--cf-border-strong);
+  background: var(--cf-surface);
+  color: var(--cf-text-muted);
+}
+
+.cf-alunos-page .cf-btn-action:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.cf-alunos-page .cf-btn-action:disabled:hover {
+  background: var(--cf-surface);
+  color: var(--cf-text-muted);
+}
+.cf-alunos-page .cf-eval-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: var(--cf-space-xl);
+}
+@media (max-width: 1024px) {
+  .cf-alunos-page .cf-eval-layout {
+    grid-template-columns: 1fr;
+  }
+}
+.cf-alunos-page .cf-eval-data-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cf-space-lg);
+}
+.cf-alunos-page .cf-eval-section {
+  display: flex;
+  flex-direction: column;
+}
+.cf-alunos-page .cf-eval-section-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--cf-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 var(--cf-space-sm) 0;
+  border-bottom: 1px solid var(--cf-border);
+  padding-bottom: 6px;
+}
+.cf-alunos-page .cf-eval-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: var(--cf-space-sm);
+}
+html[data-theme='light'] .cf-alunos-page .cf-eval-item {
+  background: #1818180f;
+}
+.cf-alunos-page .cf-eval-item {
+  display: flex;
+  flex-direction: column;
+  background: var(--cf-surface-elevated);
+  padding: var(--cf-space-sm) var(--cf-space-md);
+  border-radius: var(--cf-radius-md);
+  border: 1px solid transparent;
+  transition: border-color var(--cf-transition-fast);
+}
+.cf-alunos-page .cf-eval-item:hover {
+  border-color: var(--cf-border-strong);
+}
+.cf-alunos-page .cf-eval-lbl {
+  font-size: 0.725rem;
+  color: var(--cf-text-secondary);
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+.cf-alunos-page .cf-eval-val {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--cf-text-primary);
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+.cf-alunos-page .cf-eval-val small {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--cf-text-muted);
+}
+.cf-alunos-page .cf-eval-extra-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--cf-space-md);
+  background: var(--cf-surface-elevated);
+  padding: var(--cf-space-md);
+  border-radius: var(--cf-radius-md);
+  border: 1px solid var(--cf-border);
+}
+.cf-alunos-page .cf-extra-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.cf-alunos-page .cf-extra-label {
+  font-size: 0.725rem;
+  font-weight: 700;
+  color: var(--cf-text-muted);
+  text-transform: uppercase;
+}
+.cf-alunos-page .cf-extra-val {
+  font-size: 0.875rem;
+  color: var(--cf-text-primary);
+  font-weight: 500;
+}
+.cf-alunos-page .cf-no-eval-container {
+  text-align: center;
+  padding: var(--cf-space-xl) var(--cf-space-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--cf-space-md);
+}
+.cf-alunos-page .cf-no-eval-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--cf-radius-full);
+  background: var(--cf-surface-elevated);
+  color: var(--cf-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* CARROSSEL DE FOTOS */
+.cf-alunos-page .cf-eval-photos-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cf-space-md);
+  border-left: 1px solid var(--cf-border);
+  padding-left: var(--cf-space-xl);
+}
+@media (max-width: 1024px) {
+  .cf-alunos-page .cf-eval-photos-col {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid var(--cf-border);
+    padding-top: var(--cf-space-lg);
+  }
+}
+.cf-alunos-page .cf-photos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cf-alunos-page .cf-photos-header h4 {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--cf-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.cf-alunos-page .cf-carousel-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cf-space-sm);
+  width: 100%;
+}
+.cf-alunos-page .cf-carousel-stage {
+  position: relative;
+  border-radius: var(--cf-radius-lg);
+  overflow: hidden;
+  background: var(--cf-surface-elevated);
+  border: 1px solid var(--cf-border);
+  aspect-ratio: 3/4;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--cf-shadow-sm);
+}
+.cf-alunos-page .cf-carousel-slide {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: cfFadeIn 250ms ease-in-out;
+}
+@keyframes cfFadeIn {
+  from { opacity: 0.4; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+.cf-alunos-page .cf-carousel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.cf-alunos-page .cf-carousel-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--cf-space-xs);
+  color: var(--cf-text-muted);
+  background: var(--cf-surface-elevated);
+  padding: var(--cf-space-md);
+  text-align: center;
+}
+.cf-alunos-page .cf-carousel-placeholder p {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--cf-text-secondary);
+}
+.cf-alunos-page .cf-carousel-placeholder span {
+  font-size: 0.75rem;
+  color: var(--cf-text-muted);
+}
+.cf-alunos-page .cf-photo-toggle-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--cf-radius-full);
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--cf-transition-fast);
+  z-index: 3;
+}
+.cf-alunos-page .cf-photo-toggle-btn:hover {
+  background: rgba(15, 23, 42, 0.9);
+  transform: scale(1.08);
+}
+.cf-alunos-page .cf-photo-toggle-btn:focus-visible {
+  outline: 2px solid var(--cf-primary);
+  outline-offset: 2px;
+}
+.cf-alunos-page .cf-photo-toggle-btn.is-hidden {
+  background: var(--cf-surface);
+  border-color: var(--cf-border-strong);
+  color: var(--cf-text-secondary);
+}
+.cf-alunos-page .cf-photo-toggle-btn.is-hidden:hover {
+  color: var(--cf-primary);
+}
+.cf-alunos-page .cf-carousel-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: var(--cf-radius-full);
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--cf-transition-fast);
+  z-index: 2;
+}
+.cf-alunos-page .cf-carousel-nav-btn:hover {
+  background: var(--cf-primary);
+  border-color: var(--cf-primary);
+  transform: translateY(-50%) scale(1.08);
+}
+.cf-alunos-page .cf-carousel-nav-btn:focus-visible {
+  outline: 2px solid var(--cf-primary);
+  outline-offset: 2px;
+}
+.cf-alunos-page .cf-carousel-nav-btn.prev {
+  left: 10px;
+}
+.cf-alunos-page .cf-carousel-nav-btn.next {
+  right: 10px;
+}
+.cf-alunos-page .cf-carousel-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--cf-radius-full);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  z-index: 2;
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.cf-alunos-page .cf-carousel-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+.cf-alunos-page .cf-carousel-pills {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  width: 100%;
+}
+.cf-alunos-page .cf-carousel-pill-btn {
+  background: var(--cf-surface-elevated);
+  border: 1px solid var(--cf-border);
+  color: var(--cf-text-secondary);
+  font-size: 0.725rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: var(--cf-radius-sm);
+  cursor: pointer;
+  transition: all var(--cf-transition-fast);
+  flex: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+.cf-alunos-page .cf-carousel-pill-btn:hover {
+  border-color: var(--cf-primary);
+  color: var(--cf-primary);
+}
+.cf-alunos-page .cf-carousel-pill-btn.active {
+  background: var(--cf-primary);
+  border-color: var(--cf-primary);
+  color: #ffffff;
+}
+.cf-alunos-page .cf-carousel-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+}
+.cf-alunos-page .cf-carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--cf-radius-full);
+  background: var(--cf-border-strong);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all var(--cf-transition-fast);
+}
+.cf-alunos-page .cf-carousel-dot:hover {
+  background: var(--cf-primary-hover);
+}
+.cf-alunos-page .cf-carousel-dot.active {
+  background: var(--cf-primary);
+  width: 18px;
+  border-radius: var(--cf-radius-full);
+}
+.cf-alunos-page .cf-carousel-dot:focus-visible,
+.cf-alunos-page .cf-carousel-pill-btn:focus-visible {
+  outline: 2px solid var(--cf-primary);
+  outline-offset: 1px;
+}
+
+/* CALENDÁRIO SEMANAL */
+.cf-alunos-page .cf-calendar-panel {
+  background: var(--cf-surface);
+  border: 1px solid var(--cf-border);
+  border-radius: var(--cf-radius-xl);
+  padding: var(--cf-space-xl);
+  box-shadow: var(--cf-shadow-calendar);
+  margin-bottom: var(--cf-space-xl);
+  position: relative;
+  overflow: hidden;
+}
+.cf-alunos-page .cf-calendar-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cf-primary) 0%, var(--cf-accent) 100%);
+}
+.cf-alunos-page .cf-calendar-header-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cf-space-md);
+  margin-bottom: var(--cf-space-lg);
+  border-bottom: 1px solid var(--cf-border);
+  padding-bottom: var(--cf-space-md);
+}
+.cf-alunos-page .cf-calendar-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--cf-space-md);
+  flex-wrap: wrap;
+}
+.cf-alunos-page .cf-calendar-title-group h3 {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--cf-text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--cf-space-sm);
+}
+.cf-alunos-page .cf-calendar-title-group h3 svg {
+  color: var(--cf-primary);
+}
+.cf-alunos-page .cf-calendar-subtitle {
+  margin: 4px 0 0 0;
+  font-size: 0.875rem;
+  color: var(--cf-text-muted);
+}
+.cf-alunos-page .cf-calendar-progress-badge {
+  background: var(--cf-surface-elevated);
+  border: 1px solid var(--cf-border);
+  padding: var(--cf-space-xs) var(--cf-space-md);
+  border-radius: var(--cf-radius-full);
+  display: flex;
+  align-items: center;
+  gap: var(--cf-space-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--cf-text-primary);
+}
+.cf-alunos-page .cf-calendar-progress-mini-bar {
+  width: 60px;
+  height: 6px;
+  background: var(--cf-border);
+  border-radius: var(--cf-radius-full);
+  overflow: hidden;
+}
+.cf-alunos-page .cf-calendar-progress-mini-fill {
+  height: 100%;
+  background: var(--cf-status-completed);
+  border-radius: var(--cf-radius-full);
+  transition: width var(--cf-transition-normal);
+}
+.cf-alunos-page .cf-calendar-legend {
+  display: flex;
+  align-items: center;
+  gap: var(--cf-space-md);
+  font-size: 0.8rem;
+  color: var(--cf-text-secondary);
+  flex-wrap: wrap;
+}
+.cf-alunos-page .cf-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.cf-alunos-page .cf-legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--cf-radius-full);
+}
+.cf-alunos-page .cf-legend-dot.concluido { background-color: var(--cf-status-completed); }
+.cf-alunos-page .cf-legend-dot.pendente { background-color: var(--cf-status-progress); }
+.cf-alunos-page .cf-legend-dot.descanso { background-color: var(--cf-text-muted); }
+.cf-alunos-page .cf-legend-dot.hoje { background-color: var(--cf-primary); }
+
+.cf-alunos-page .cf-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--cf-space-md);
+}
+@media (max-width: 1024px) {
+  .cf-alunos-page .cf-calendar-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+@media (max-width: 640px) {
+  .cf-alunos-page .cf-calendar-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.cf-alunos-page .cf-day-card {
+  background: var(--cf-surface-elevated);
+  border: 1px solid var(--cf-border);
+  border-radius: var(--cf-radius-lg);
+  padding: var(--cf-space-md);
+  display: flex;
+  flex-direction: column;
+  min-height: 210px;
+  position: relative;
+  transition: transform var(--cf-transition-fast), box-shadow var(--cf-transition-fast), border-color var(--cf-transition-fast);
+}
+.cf-alunos-page .cf-day-card:hover {
+  box-shadow: var(--cf-shadow-md);
+}
+.cf-alunos-page .cf-day-card.is-today {
+  border: 2px solid var(--cf-primary);
+  box-shadow: 0 0 0 1px var(--cf-primary-light);
+}
+.cf-alunos-page .cf-day-card.status-concluido {
+  background: var(--cf-status-completed-bg);
+  border-color: var(--cf-status-completed);
+}
+.cf-alunos-page .cf-day-card.status-concluido:hover {
+  border-color: var(--cf-status-completed);
+}
+.cf-alunos-page .cf-day-card.status-pendente {
+  background: var(--cf-status-progress-bg);
+  border-color: var(--cf-status-progress);
+}
+.cf-alunos-page .cf-day-card.status-pendente:hover {
+  border-color: var(--cf-status-progress);
+}
+.cf-alunos-page .cf-day-card.status-descanso {
+  background: var(--cf-surface);
+  border-color: var(--cf-border);
+  opacity: 0.85;
+}
+.cf-alunos-page .cf-day-card.status-sem-treino {
+  background: var(--cf-surface-hover);
+  border: 1px dashed var(--cf-border-strong);
+}
+.cf-alunos-page .cf-day-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--cf-space-md);
+  border-bottom: 1px solid var(--cf-border);
+  padding-bottom: var(--cf-space-xs);
+}
+.cf-alunos-page .cf-day-date-box {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.cf-alunos-page .cf-day-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--cf-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.cf-alunos-page .cf-day-date {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--cf-text-muted);
+}
+.cf-alunos-page .cf-day-card.is-today .cf-day-date {
+  color: var(--cf-primary);
+}
+.cf-alunos-page .cf-today-badge {
+  background: var(--cf-primary);
+  color: #ffffff;
+  font-size: 0.65rem;
+  padding: 2px 7px;
+  border-radius: var(--cf-radius-full);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.cf-alunos-page .cf-day-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+.cf-alunos-page .cf-workout-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.725rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--cf-radius-sm);
+  margin-bottom: var(--cf-space-sm);
+  width: fit-content;
+}
+.cf-alunos-page .cf-workout-badge.concluido { background: var(--cf-status-completed); color: #ffffff; }
+.cf-alunos-page .cf-workout-badge.pendente { background: var(--cf-status-progress); color: #ffffff; }
+.cf-alunos-page .cf-workout-badge.descanso { background: var(--cf-surface-elevated); color: var(--cf-text-muted); border: 1px solid var(--cf-border); }
+.cf-alunos-page .cf-workout-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--cf-text-primary);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+.cf-alunos-page .cf-workout-focus {
+  font-size: 0.775rem;
+  color: var(--cf-text-muted);
+  margin-bottom: var(--cf-space-sm);
+  line-height: 1.3;
+}
+.cf-alunos-page .cf-workout-time {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--cf-text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: auto;
+  padding-top: var(--cf-space-xs);
+}
+.cf-alunos-page .cf-add-workout-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: 110px;
+}
+.cf-alunos-page .cf-btn-add-workout {
+  width: 100%;
+  height: 100%;
+  min-height: 90px;
+  background: transparent;
+  border: 1px dashed var(--cf-border-strong);
+  border-radius: var(--cf-radius-md);
+  color: var(--cf-text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: var(--cf-space-sm);
+  transition: all var(--cf-transition-fast);
+}
+.cf-alunos-page .cf-btn-add-workout:hover {
+  background: var(--cf-primary-light);
+  border-color: var(--cf-primary);
+  color: var(--cf-primary);
+  transform: translateY(-1px);
+}
+.cf-alunos-page .cf-btn-add-workout:active { transform: translateY(0); }
+.cf-alunos-page .cf-btn-add-workout:focus-visible { outline: 2px solid var(--cf-primary); outline-offset: 1px; }
+.cf-alunos-page .cf-btn-add-workout svg { width: 20px; height: 20px; }
+.cf-alunos-page .cf-rest-day-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+  gap: var(--cf-space-xs);
+  color: var(--cf-text-muted);
+}
+.cf-alunos-page .cf-rest-day-body span { font-size: 0.85rem; font-weight: 600; }
+
+/* Cadastro de aluno */
+.cf-trainee-form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--cf-space-md);
+}
+
+.cf-trainee-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.cf-trainee-form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--cf-text-primary);
+}
+
+.cf-trainee-form-group > span {
+  color: var(--cf-text-muted);
+  font-size: 0.8rem;
+}
+
+.cf-trainee-form-group input:not(.cf-trainee-photo-input) {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--cf-border);
+  border-radius: 10px;
+  background: var(--cf-bg);
+  color: var(--cf-text-primary);
+  font: inherit;
+}
+
+.cf-trainee-form-group input:not(.cf-trainee-photo-input):focus {
+  outline: none;
+  border-color: var(--cf-primary);
+  box-shadow: 0 0 0 3px var(--cf-primary-light);
+}
+
+.cf-trainee-photo-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.cf-trainee-photo-picker {
+  width: fit-content;
+  max-width: 100%;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1rem;
+  border: 1px dashed var(--cf-primary);
+  border-radius: 10px;
+  background: var(--cf-primary-light);
+  color: var(--cf-primary);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.cf-trainee-photo-picker:hover {
+  background: var(--cf-primary);
+  color: #fff;
+}
+
+.cf-trainee-photo-picker span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cf-trainee-photo-preview {
+  width: 100%;
+  max-width: 400px;
+  height: 400px;
+  overflow: hidden;
+  border: 1px dashed var(--cf-border-strong);
+  border-radius: var(--cf-radius-lg);
+  background: var(--cf-bg);
+}
+
+.cf-trainee-photo-preview img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.cf-trainee-photo-preview > div {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--cf-text-muted);
+  font-size: 0.85rem;
+}
+
+.cf-trainee-form-error {
+  margin: 0;
+  color: var(--cf-danger, #ef4444);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 640px) {
+  .cf-trainee-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .cf-trainee-photo-preview {
+    height: 300px;
+  }
+}
+
+/* Tela de criação de aluno */
+.cf-alunos-page .cf-trainee-create-view {
+  width: 100%;
+  max-width: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-bottom: 2rem;
+  animation: cf-trainee-enter 0.28s ease-out;
+}
+
+.cf-alunos-page .cf-physical-assessment-view {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-bottom: 2rem;
+  animation: cf-trainee-enter 0.28s ease-out;
+}
+
+.cf-alunos-page .cf-assessment-form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.cf-alunos-page .cf-assessment-input-unit {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  min-height: 46px;
+  overflow: hidden;
+  border: 1px solid var(--cf-border);
+  border-radius: 10px;
+  background: var(--cf-bg);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cf-alunos-page .cf-assessment-input-unit:focus-within {
+  border-color: var(--cf-primary);
+  box-shadow: 0 0 0 3px var(--cf-primary-light);
+}
+
+.cf-alunos-page .cf-assessment-input-unit input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--cf-text-primary);
+  font: inherit;
+  padding: 0.75rem 0.15rem 0.75rem 1rem;
+}
+
+.cf-alunos-page .cf-assessment-input-unit span {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 0.85rem;
+  color: var(--cf-text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.cf-alunos-page .cf-assessment-input-unit--readonly {
+  border-style: dashed;
+  background: var(--cf-surface-hover);
+}
+
+.cf-alunos-page .cf-assessment-input-unit--readonly input {
+  color: var(--cf-text-muted);
+  cursor: default;
+}
+
+.cf-alunos-page .cf-trainee-form-group select,
+.cf-alunos-page .cf-trainee-form-group textarea {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  border: 1px solid var(--cf-border);
+  border-radius: 10px;
+  outline: none;
+  background: var(--cf-bg);
+  color: var(--cf-text-primary);
+  font: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cf-alunos-page .cf-trainee-form-group select {
+  min-height: 46px;
+  padding: 0.75rem 1rem;
+}
+
+.cf-alunos-page .cf-trainee-form-group textarea {
+  resize: vertical;
+  padding: 0.85rem 1rem;
+  line-height: 1.5;
+}
+
+.cf-alunos-page .cf-trainee-form-group select:focus,
+.cf-alunos-page .cf-trainee-form-group textarea:focus {
+  border-color: var(--cf-primary);
+  box-shadow: 0 0 0 3px var(--cf-primary-light);
+}
+
+.cf-alunos-page .cf-assessment-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.cf-alunos-page .cf-assessment-photo-field {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 0.55rem;
+}
+
+.cf-alunos-page .cf-assessment-photo-label {
+  color: var(--cf-text-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.cf-alunos-page .cf-assessment-photo-picker {
+  position: relative;
+  display: flex;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 1px dashed var(--cf-border-strong);
+  border-radius: var(--cf-radius-md);
+  background: var(--cf-bg);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.cf-alunos-page .cf-assessment-photo-picker:hover {
+  border-color: var(--cf-primary);
+  background: var(--cf-primary-light);
+  transform: translateY(-2px);
+}
+
+.cf-alunos-page .cf-assessment-photo-picker img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cf-alunos-page .cf-assessment-photo-placeholder {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.75rem;
+  color: var(--cf-text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.cf-alunos-page .cf-assessment-photo-picker:hover .cf-assessment-photo-placeholder {
+  color: var(--cf-primary);
+}
+
+.cf-alunos-page .cf-assessment-photo-file-name {
+  overflow: hidden;
+  color: var(--cf-text-muted);
+  font-size: 0.75rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cf-alunos-page .cf-trainee-create-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.cf-alunos-page .cf-trainee-create-title {
+  padding-left: 0.1rem;
+}
+
+.cf-alunos-page .cf-trainee-create-eyebrow,
+.cf-alunos-page .cf-trainee-panel-eyebrow {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--cf-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cf-alunos-page .cf-trainee-create-title .cf-h1 {
+  margin: 0;
+}
+
+.cf-alunos-page .cf-trainee-create-title .cf-text-body {
+  max-width: 640px;
+  margin: 0.45rem 0 0;
+  color: var(--cf-text-muted);
+}
+
+.cf-alunos-page .cf-trainee-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--cf-border);
+  border-radius: var(--cf-radius-xl);
+  background: var(--cf-surface);
+  box-shadow: var(--cf-shadow-sm);
+}
+
+.cf-alunos-page .cf-trainee-panel-heading h2,
+.cf-alunos-page .cf-trainee-panel-heading p {
+  margin: 0;
+}
+
+.cf-alunos-page .cf-trainee-panel-heading h2 {
+  color: var(--cf-text-primary);
+  font-size: 1.2rem;
+}
+
+.cf-alunos-page .cf-trainee-panel-heading p {
+  max-width: 620px;
+  margin-top: 0.4rem;
+  color: var(--cf-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.cf-alunos-page .cf-trainee-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.cf-alunos-page .cf-trainee-form-group--full {
+  grid-column: 1 / -1;
+}
+
+.cf-alunos-page .cf-trainee-form-group input:not(.cf-trainee-photo-input) {
+  min-height: 46px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.cf-alunos-page .cf-trainee-form-group input:not(.cf-trainee-photo-input):hover {
+  border-color: var(--cf-border-strong);
+}
+
+.cf-alunos-page .cf-trainee-media-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 400px);
+  align-items: start;
+  gap: clamp(1.25rem, 4vw, 3rem);
+}
+
+.cf-alunos-page .cf-trainee-media-layout .cf-trainee-form-group {
+  padding-top: 0.25rem;
+}
+
+.cf-alunos-page .cf-trainee-photo-picker {
+  min-height: 46px;
+  box-sizing: border-box;
+  padding-inline: 1.1rem;
+  border-style: solid;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.cf-alunos-page .cf-trainee-photo-picker:hover {
+  transform: translateY(-1px);
+}
+
+.cf-alunos-page .cf-trainee-photo-preview {
+  justify-self: end;
+  border-style: solid;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+.cf-alunos-page .cf-trainee-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 0.25rem;
+}
+
+.cf-alunos-page .cf-trainee-form-actions .cf-btn {
+  min-width: 132px;
+}
+
+.cf-alunos-page .cf-trainee-form-error {
+  padding: 0.8rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--cf-danger, #ef4444) 35%, transparent);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--cf-danger, #ef4444) 10%, transparent);
+}
+
+@keyframes cf-trainee-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 700px) {
+  .cf-alunos-page .cf-trainee-form-grid,
+  .cf-alunos-page .cf-trainee-media-layout,
+  .cf-alunos-page .cf-assessment-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cf-alunos-page .cf-assessment-photo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cf-alunos-page .cf-trainee-photo-preview {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 480px) {
+  .cf-alunos-page .cf-trainee-panel {
+    border-radius: var(--cf-radius-lg);
+  }
+
+  .cf-alunos-page .cf-trainee-form-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .cf-alunos-page .cf-trainee-form-actions .cf-btn {
+    width: 100%;
+  }
+
+  .cf-alunos-page .cf-assessment-photo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cf-alunos-page .cf-assessment-photo-picker {
+    max-height: 360px;
+  }
+}

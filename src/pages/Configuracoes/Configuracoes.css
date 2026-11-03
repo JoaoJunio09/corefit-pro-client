@@ -1,0 +1,187 @@
+.cf-settings {
+  padding-bottom: 40px;
+}
+.cf-settings-heading {
+  margin: 35px 0;
+}
+.cf-settings-heading > span {
+  font-size: 10px;
+  letter-spacing: 1.8px;
+  color: var(--cf-text-muted);
+}
+.cf-settings-heading h1 {
+  font-size: 32px;
+  color: var(--cf-text-primary);
+  margin: 12px 0;
+}
+.cf-settings-heading p,
+.cf-settings-panel > p,
+.cf-settings-panel form > p {
+  font-size: 13px;
+  color: var(--cf-text-muted);
+  line-height: 1.8;
+}
+.cf-settings-tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.cf-settings-tabs button {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--cf-surface);
+  color: var(--cf-text-muted);
+  border: 1px solid var(--cf-border);
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.cf-settings-tabs button.active {
+  color: #92b770;
+  border-color: #92b770;
+}
+.cf-settings-panel {
+  padding: 30px;
+  border: 1px solid var(--cf-border);
+  border-radius: 18px;
+  background: var(--cf-surface);
+}
+.cf-settings-panel h2 {
+  color: var(--cf-text-primary);
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+.cf-settings-grid {
+  border: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin: 30px 0;
+  min-width: 0;
+}
+.cf-settings-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 0;
+  font-size: 12px;
+  color: var(--cf-text-secondary);
+}
+.cf-settings-grid input {
+  width: 100%;
+  min-width: 0;
+  padding: 13px 15px;
+  background: var(--cf-bg);
+  border: 1px solid var(--cf-border);
+  border-radius: 8px;
+  color: var(--cf-text-primary);
+  outline: none;
+}
+.cf-settings-grid input:focus {
+  border-color: #92b770;
+}
+.cf-settings-grid small {
+  font-size: 10px;
+  color: var(--cf-text-muted);
+}
+.cf-settings-theme {
+  display: flex;
+  gap: 20px;
+  margin-top: 26px;
+}
+.cf-settings-theme button {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 15px;
+  border: 1px solid var(--cf-border);
+  border-radius: 12px;
+  background: transparent;
+  color: var(--cf-text-primary);
+  cursor: pointer;
+}
+.cf-settings-theme button.active {
+  border-color: #92b770;
+}
+.cf-theme-swatch {
+  display: block;
+  width: 135px;
+  height: 75px;
+  border-radius: 6px;
+  border: 1px solid #78946640;
+  position: relative;
+}
+.cf-theme-swatch:after {
+  content: "";
+  position: absolute;
+  inset: 16px;
+  border-radius: 4px;
+  border: 1px solid #93ab7150;
+  box-shadow: inset 30px 0 #93ab7120;
+}
+.cf-theme-swatch.dark {
+  background: #16241c;
+}
+.cf-theme-swatch.light {
+  background: #f4f5ed;
+}
+.cf-settings-message,
+.cf-settings-error {
+  padding: 14px 17px;
+  margin-bottom: 22px;
+  border-radius: 9px;
+  font-size: 12px;
+}
+.cf-settings-message {
+  color: #8db464;
+  background: #8db46415;
+  border: 1px solid #8db46450;
+}
+.cf-settings-error {
+  color: #d97665;
+  background: #d9766515;
+  border: 1px solid #d9766550;
+}
+.cf-settings-error button {
+  background: none;
+  border: 0;
+  color: inherit;
+  text-decoration: underline;
+  margin-left: 12px;
+  cursor: pointer;
+}
+.cf-settings-logout {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: var(--cf-text-muted);
+  border: 1px solid var(--cf-border);
+  background: transparent;
+  padding: 12px 20px;
+  border-radius: 9px;
+  margin-top: 22px;
+  font-size: 12px;
+  cursor: pointer;
+}
+@media (max-width: 600px) {
+  .cf-settings-panel {
+    padding: 22px;
+  }
+  .cf-settings-grid {
+    grid-template-columns: 1fr;
+  }
+  .cf-theme-swatch {
+    width: 100px;
+  }
+  .cf-settings-tabs {
+    gap: 8px;
+  }
+  .cf-settings-tabs button {
+    font-size: 11px;
+    padding: 11px 13px;
+  }
+}

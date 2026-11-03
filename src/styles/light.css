@@ -1,0 +1,49 @@
+/* ============================================================================
+   LIGHT.CSS
+   Tokens visuais (CSS Variables) do Light Mode.
+   ============================================================================ */
+
+html[data-theme='light'],
+[data-theme='light'] {
+  --cf-bg: #F4F5F7;
+  --cf-surface: #FFFFFF;
+  --cf-surface-hero: #FFFFFF;
+  --cf-surface-hover: #F8F9FA;
+  --cf-surface-elevated: #FFFFFF;
+
+  --cf-primary: #E84833;
+  --cf-primary-hover: #D63925;
+  --cf-primary-light: #FDECEA;
+  --cf-primary-alpha: rgba(232, 72, 51, 0.1);
+
+  --cf-accent: #FF8A00;
+
+  --cf-text-primary: #111418;
+  --cf-text-secondary: #565E68;
+  --cf-text-muted: #9AA4B0;
+
+  --cf-border: #E6E9EE;
+  --cf-border-strong: #D1D7E0;
+  --cf-divider: rgba(0, 0, 0, 0.06);
+
+  --cf-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.03);
+  --cf-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.05);
+  --cf-shadow-calendar: 0 12px 28px -6px rgba(15, 23, 42, 0.08);
+
+  --cf-status-completed: #10B981;
+  --cf-status-completed-bg: #D1FAE5;
+
+  --cf-status-progress: #F59E0B;
+  --cf-status-progress-bg: #FEF3C7;
+
+  --cf-status-pending: #94A3B8;
+  --cf-status-pending-bg: #F1F5F9;
+
+  --cf-alert-high: #EF4444;
+  --cf-alert-high-bg: #FEE2E2;
+  --cf-alert-medium: #F59E0B;
+  --cf-alert-medium-bg: #FEF3C7;
+
+  --cf-badge-bg: #F1F3F5;
+  --cf-badge-text: #495057;
+}

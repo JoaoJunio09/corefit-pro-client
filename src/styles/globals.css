@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Manrope:wght@600;700;800&display=swap');
+
+:root{--font-body:'Inter',sans-serif;--font-heading:'Manrope',sans-serif;--color-bg:var(--cf-bg);--color-text:var(--cf-text-primary);--color-border:var(--cf-border);--color-text-muted:var(--cf-text-muted)}
+.cf-load-feedback{padding:18px 20px;margin:18px 0;border:1px solid var(--cf-border);background:var(--cf-surface);border-radius:12px;color:var(--cf-text-secondary);font-size:13px;display:flex;justify-content:space-between;align-items:center;gap:16px}.cf-load-feedback.is-error{border-color:#d7856550}.cf-load-feedback button{border:0;background:transparent;color:var(--cf-primary);font-size:12px;font-weight:600;cursor:pointer}
+
+.cf-access-state{min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:20px;padding:32px;text-align:center}.cf-access-state h1{font-size:24px}.cf-access-state button{padding:12px 24px;border:1px solid #70826c;border-radius:10px;background:#244d35;color:white;cursor:pointer}
+button:disabled{cursor:not-allowed;opacity:.6}button:focus-visible,a:focus-visible{outline:2px solid #84aa62;outline-offset:4px}
+
+/* Reset e Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tipografia Base */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-text);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Scrollbar Customizada */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
