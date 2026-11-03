@@ -2,6 +2,7 @@ import { ParamsTraineeAPI } from '../models/trainee/ParamsTraineeAPI';
 import { TraineeDetails } from '../models/trainee/TraineeDetails';
 import { TraineeResponse } from '../models/trainee/TraineeResponse';
 import { TraineeRequest } from '../models/trainee/TraineeRequest';
+import { TraineeAccount, TraineeAccountRequest } from '../models/trainee/TraineeAccount';
 import api from './api';
 
 class TraineeService {
@@ -68,6 +69,26 @@ class TraineeService {
 		});
 
 		return response.data;
+	}
+
+	async getAccount(traineeId: string) {
+		const response = await api.get<TraineeAccount>(`${this.BASE_URL}/${traineeId}/account`, {
+			headers: { Authorization: `Bearer ${this.accessToken}` }
+		});
+		return response.data;
+	}
+
+	async updateAccount(traineeId: string, data: TraineeAccountRequest) {
+		const response = await api.put<TraineeAccount>(`${this.BASE_URL}/${traineeId}/account`, data, {
+			headers: { Authorization: `Bearer ${this.accessToken}` }
+		});
+		return response.data;
+	}
+
+	async resetPassword(traineeId: string, newPassword: string) {
+		await api.put(`${this.BASE_URL}/${traineeId}/account/password`, { newPassword }, {
+			headers: { Authorization: `Bearer ${this.accessToken}` }
+		});
 	}
 }
 

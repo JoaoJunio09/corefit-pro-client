@@ -12,6 +12,8 @@ import PlanoTreinoAluno from './components/PlanoTreinoAluno';
 import useTrainingPlanService from '../../hooks/useTrainingPlanService';
 import { TrainingPlanDetails } from '../../services/TrainingPlanService';
 import LoadFeedback from '../../components/LoadFeedback';
+import AlunoAccountSettings from './components/AlunoAccountSettings';
+import { Settings, LayoutDashboard } from 'lucide-react';
 import {
   EvolutionPhoto,
   EvolutionPhotoKey,
@@ -44,6 +46,7 @@ export default function AlunosPage() {
   const [trainingPlanMode, setTrainingPlanMode] = useState<'create' | 'edit' | 'new' | null>(null);
 
   const {
+    detailsTab, setDetailsTab,
     loading, loadError, retry,
     trainees,
     traineSelected,
@@ -371,11 +374,11 @@ export default function AlunosPage() {
                 </div>
                 <div className="cf-trainee-form-group">
                   <label htmlFor="trainee-password">Senha *</label>
-                  <input id="trainee-password" type="password" autoComplete="new-password" value={formData.password} onChange={(event: ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, password: event.target.value })} placeholder="Defina uma senha" required />
+                  <input id="trainee-password" type="password" autoComplete="new-password" value={formData.password} onChange={(event: ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, password: event.target.value })} placeholder="No mínimo 6 caracteres" minLength={6} maxLength={128} required />
                 </div>
                 <div className="cf-trainee-form-group">
                   <label htmlFor="trainee-confirm-password">Confirmar senha *</label>
-                  <input id="trainee-confirm-password" type="password" autoComplete="new-password" value={formData.confirmPassword} onChange={(event: ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, confirmPassword: event.target.value })} placeholder="Repita a senha" required />
+                  <input id="trainee-confirm-password" type="password" autoComplete="new-password" value={formData.confirmPassword} onChange={(event: ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, confirmPassword: event.target.value })} placeholder="Repita a senha" minLength={6} maxLength={128} required />
                 </div>
                 <div className="cf-trainee-form-group cf-trainee-form-group--full">
                   <label htmlFor="trainee-recovery-email">E-mail de recuperação</label>
@@ -444,6 +447,17 @@ export default function AlunosPage() {
               </div>
             </div>
 
+            <nav className="cf-student-detail-tabs" role="tablist" aria-label="Detalhes do aluno">
+              <button id="student-overview-tab" type="button" role="tab" aria-selected={detailsTab === 'overview'} aria-controls="student-overview-panel" onClick={() => setDetailsTab('overview')}><LayoutDashboard size={17} />Visão geral</button>
+              <button id="student-settings-tab" type="button" role="tab" aria-selected={detailsTab === 'settings'} aria-controls="student-settings-panel" onClick={() => setDetailsTab('settings')}><Settings size={17} />Configurações</button>
+            </nav>
+
+            {detailsTab === 'settings' ? (
+              <div role="tabpanel" id="student-settings-panel" aria-labelledby="student-settings-tab">
+                <AlunoAccountSettings key={traineSelected.trainee.id} traineeId={traineSelected.trainee.id} />
+              </div>
+            ) : (
+            <div role="tabpanel" id="student-overview-panel" aria-labelledby="student-overview-tab">
             <section className="cf-plan-context-strip" aria-label="Contexto do Plano e Metas">
               <div className="cf-context-block">
                 <span className="cf-context-label">Objetivo</span>
@@ -866,6 +880,8 @@ export default function AlunosPage() {
                 })}
               </div>
             </section>
+            </div>
+            )}
           </div>
         ) : (
           <div>

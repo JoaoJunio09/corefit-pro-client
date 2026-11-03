@@ -89,6 +89,8 @@ const getApiErrorMessage = (error: unknown, fallbackMessage: string) => {
 
 function useAlunos() {
   const [traineeSelectedId, setTraineeSelectedId] = useState<string | null>(null);
+  const [detailsTab, setDetailsTab] = useState<'overview' | 'settings'>('overview');
+  useEffect(() => { setDetailsTab('overview'); }, [traineeSelectedId]);
   const [isCreateOpen, setIsCreateOpen] = useState(false);
   const [formData, setFormData] = useState<TraineeFormData>(EMPTY_FORM_DATA);
   const [formError, setFormError] = useState<string | null>(null);
@@ -414,6 +416,7 @@ function useAlunos() {
   };
 
   return {
+    detailsTab, setDetailsTab,
     loading: queryTrainees.isLoading || Boolean(traineeSelectedId && queryDetailsTrainee.isLoading),
     loadError: queryTrainees.error || queryDetailsTrainee.error
       ? getApiErrorMessage(queryTrainees.error || queryDetailsTrainee.error, 'Não foi possível carregar os alunos.') : null,
